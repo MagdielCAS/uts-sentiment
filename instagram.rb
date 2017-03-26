@@ -1,7 +1,7 @@
 #instagram.rb
 class Instagram
 
-  def initialize
+  def perform_requisition(mood)
     require 'net/http'
     require 'uri'
     require 'json'
@@ -17,69 +17,69 @@ class Instagram
     request["Cache-Control"] = "no-cache"
     request["Referer"] = "https://app.buzzmonitor.com.br/reports/58860cac626d2d4509218a00"
     request["Connection"] = "keep-alive"
-    request.body = '{  
-      "authentication_params":{  
-          "bm_user":"100000724400369",
-          "api_key":"pu81POMG7OLjgZoaurt4Mw"
+    request.body = "{  
+      \"authentication_params\":{  
+          \"bm_user\":\"100000724400369\",
+          \"api_key\":\"pu81POMG7OLjgZoaurt4Mw\"
       },
-      "buzzmonitor_username":"100000724400369",
-      "changes":{  
-          "monitoring_posts":[  
+      \"buzzmonitor_username\":\"100000724400369\",
+      \"changes\":{  
+          \"monitoring_posts\":[  
             {  
-                "other_pages":false,
-                "brand":"sousalealfabiog_vasco",
-                "login":"sousalealfabiog",
-                "source":"im",
-                "posts":[  
+                \"other_pages\":false,
+                \"brand\":\"sousalealfabiog_vasco\",
+                \"login\":\"sousalealfabiog\",
+                \"source\":\"im\",
+                \"posts\":[  
                   {  
-                      "elasticsearch_index":"bm-posts-saas-2017-3",
-                      "elasticsearch_id":"instagram-sousalealfabiog_vasco-1477513864757002159_1431780633",
-                      "sentiment":"positive",
-                      "tags_to_add":[  
+                      \"elasticsearch_index\":\"bm-posts-saas-2017-3\",
+                      \"elasticsearch_id\":\"instagram-sousalealfabiog_vasco-1477513864757002159_1431780633\",
+                      \"sentiment\":\"#{mood}\",
+                      \"tags_to_add\":[  
                         {  
-                            "_id":"583f2822626d2d6223cf1500",
-                            "created_at":"2016-11-30T17:27:30.774-02:00",
-                            "deleted_at":null,
-                            "name":"Sentiment_Edited",
-                            "owner_id":"582231db626d2d015ed71f00",
-                            "source":null,
-                            "sub_tags":[  
+                            \"_id\":\"583f2822626d2d6223cf1500\",
+                            \"created_at\":\"2016-11-30T17:27:30.774-02:00\",
+                            \"deleted_at\":null,
+                            \"name\":\"Sentiment_Edited\",
+                            \"owner_id\":\"582231db626d2d015ed71f00\",
+                            \"source\":null,
+                            \"sub_tags\":[  
 
                             ],
-                            "updated_at":"2016-11-30T17:27:30.774-02:00",
-                            "value":"20170324121744_add_time_to_tag_func###100000724400369_add_username_to_tag_func###",
-                            "selection":"blank",
-                            "user_login":"sousalealfabiog"
+                            \"updated_at\":\"2016-11-30T17:27:30.774-02:00\",
+                            \"value\":\"20170324121744_add_time_to_tag_func###100000724400369_add_username_to_tag_func###\",
+                            \"selection\":\"blank\",
+                            \"user_login\":\"sousalealfabiog\"
                         }
                       ],
-                      "tags_to_edit":[  
+                      \"tags_to_edit\":[  
 
                       ],
-                      "tags_to_remove":[  
+                      \"tags_to_remove\":[  
 
                       ],
-                      "page_id":null
+                      \"page_id\":null
                   }
                 ]
             }
           ],
-          "twitter_dms":[  
+          \"twitter_dms\":[  
 
           ],
-          "twitter_mentions":[  
+          \"twitter_mentions\":[  
 
           ],
-          "facebook_pages_wall":[  
+          \"facebook_pages_wall\":[  
 
           ],
-          "facebook_private_messages":[  
+          \"facebook_private_messages\":[  
 
           ],
-          "linkedin_updates":[  
+          \"linkedin_updates\":[  
 
           ]
       }
-    }'
+    }"
 
     req_options = {
       use_ssl: uri.scheme == "https",
