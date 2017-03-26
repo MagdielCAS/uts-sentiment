@@ -13,7 +13,7 @@ request["Accept"] = "*/*"
 request["Cache-Control"] = "no-cache"
 request["Referer"] = "https://app.buzzmonitor.com.br/reports/58860cac626d2d4509218a00"
 request["Connection"] = "keep-alive"
-request.body = JSON.dump(JSON.parse('{  
+request.body = '{  
    "authentication_params":{  
       "bm_user":"100000724400369",
       "api_key":"pu81POMG7OLjgZoaurt4Mw"
@@ -75,7 +75,7 @@ request.body = JSON.dump(JSON.parse('{
 
       ]
    }
-}'))
+}'
 
 req_options = {
   use_ssl: uri.scheme == "https",
@@ -85,7 +85,15 @@ response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
   http.request(request)
 end
 
-puts response.code
+parsed_json = JSON.parse(response.body)
+
+sentiment = ""
+
+parsed_json["data"].each do |teste|
+  sentiment = teste["sentiment"]
+end
+
+puts sentiment
 
 # response.code
 # response.body
