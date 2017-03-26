@@ -92,7 +92,7 @@ class Instagram
     @parsed_json = JSON.parse(response.body)
   end
 
-  def get_sentiment
+  def sentiment?
     @parsed_json["data"].each do |teste|
       @sentiment = teste["sentiment"]
     end
