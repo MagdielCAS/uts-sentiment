@@ -1,4 +1,6 @@
+#instagram.rb
 class Instagram
+
   def initialize
     require 'net/http'
     require 'uri'
@@ -90,7 +92,7 @@ class Instagram
     @parsed_json = JSON.parse(response.body)
   end
 
-  def getSentiment
+  def get_sentiment
     @parsed_json["data"].each do |teste|
       @sentiment = teste["sentiment"]
     end
