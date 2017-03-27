@@ -90,6 +90,7 @@ class Instagram
     end
 
     @parsed_json = JSON.parse(response.body)
+    return response.code
   end
 
   def sentiment?
